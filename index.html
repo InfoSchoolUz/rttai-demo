@@ -1,1 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Real-Time Teacher AI Demo</title>
+</head>
+<body style="font-family: Arial; text-align:center; margin-top:50px;">
+  <h1>🎓 Real-Time Teacher AI</h1>
+  <p>Interactive classroom support demo</p>
 
+  <input id="q" placeholder="Savol yozing..." style="padding:10px; width:260px;">
+  <button onclick="ask()">Yuborish</button>
+
+  <p id="res" style="margin-top:20px; font-weight:bold;"></p>
+
+  <script>
+    function ask() {
+      const q = document.getElementById('q').value.trim();
+      document.getElementById('res').innerText =
+        q ? "AI javobi: " + q + " haqida sodda tushuntirish berildi."
+          : "Iltimos, savol yozing.";
+    }
+  </script>
+</body>
+</html>
