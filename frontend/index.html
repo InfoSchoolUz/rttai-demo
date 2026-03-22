@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Real-Time Teacher</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <div class="dot"></div>
+        <div>
+          <h1>Real-Time Teacher</h1>
+          <p class="sub">Camera always on • Auto snapshots • Push-to-talk / Live chunks • Gemini lesson output</p>
+        </div>
+      </div>
+
+      <div class="pill">
+        <span class="muted">Backend:</span>
+        <span id="apiStatus" class="ok">ready</span>
+      </div>
+    </header>
+
+    <section class="grid">
+      <!-- Camera -->
+      <section class="card">
+        <div class="cardHead">
+          <h2>📷 Camera</h2>
+          <div class="row gap">
+            <label class="toggle">
+              <input id="autoSnap" type="checkbox" checked />
+              <span>Auto snapshot</span>
+            </label>
+
+            <label class="mini">
+              Every
+              <input id="snapEvery" type="number" min="1" max="10" value="3" />
+              sec
+            </label>
+
+            <button id="btnSnap" class="btn ghost">Take snapshot</button>
+          </div>
+        </div>
+
+        <video id="video" autoplay playsinline muted></video>
+
+        <div class="meta">
+          <span id="snapStatus" class="muted">—</span>
+          <span id="camStatus" class="muted">—</span>
+        </div>
+
+        <img id="snapPreview" class="preview" alt="Snapshot preview" />
+      </section>
+
+      <!-- Microphone -->
+      <section class="card">
+        <div class="cardHead">
+          <h2>🎙️ Microphone</h2>
+
+          <div class="row gap wrapRow">
+            <label class="mini">
+              Mode
+              <select id="mode">
+                <option value="ptt" selected>Push-to-talk</option>
+                <option value="live">Live chunks (2s)</option>
+              </select>
+            </label>
+
+            <label class="mini">
+              Grade
+              <input id="grade" type="text" value="7" />
+            </label>
+
+            <label class="mini">
+              Subject
+              <input id="subject" type="text" value="Informatics" />
+            </label>
+
+            <label class="mini">
+              Output language
+              <select id="language">
+                <option value="en" selected>English</option>
+                <option value="uz">Uzbek</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="row gap wrapRow">
+          <button id="btnRec" class="btn primary">Hold to speak</button>
+          <button id="btnSend" class="btn" disabled>Send</button>
+
+          <span id="recStatus" class="muted">—</span>
+        </div>
+
+        <audio id="audioPreview" controls></audio>
+
+        <div class="hint">
+          Tip: for the “real video chat feel”, keep camera on + auto snapshots, then use Live chunks mode.
+        </div>
+      </section>
+    </section>
+
+    <!-- Output -->
+    <section class="card">
+      <div class="cardHead">
+        <h2>🧠 Lesson Output</h2>
+        <div class="row gap">
+          <button id="btnClear" class="btn ghost">Clear</button>
+          <label class="toggle">
+            <input id="pretty" type="checkbox" checked />
+            <span>Pretty view</span>
+          </label>
+        </div>
+      </div>
+
+      <div id="prettyOut" class="pretty" style="display:none;">
+        <div class="kv">
+          <div class="k">Observation</div>
+          <div class="v" id="p_observation">—</div>
+        </div>
+        <div class="kv">
+          <div class="k">Topic</div>
+          <div class="v" id="p_topic">—</div>
+        </div>
+        <div class="kv">
+          <div class="k">Summary</div>
+          <div class="v" id="p_summary">—</div>
+        </div>
+        <div class="kv">
+          <div class="k">Explanation</div>
+          <div class="v" id="p_expl">—</div>
+        </div>
+
+        <div class="cols">
+          <div>
+            <h3>Key points</h3>
+            <ul id="p_points"></ul>
+          </div>
+          <div>
+            <h3>Quick quiz</h3>
+            <div id="p_quiz"></div>
+          </div>
+        </div>
+
+        <div class="cols">
+          <div>
+            <h3>Homework</h3>
+            <ul id="p_hw"></ul>
+          </div>
+          <div>
+            <h3>Teacher tip</h3>
+            <div class="tipbox" id="p_tip">—</div>
+          </div>
+        </div>
+      </div>
+
+      <pre id="out" class="out">—</pre>
+    </section>
+
+    <footer class="muted foot">
+      <span>Open: <b>http://localhost:8000/app/</b></span>
+      <span>•</span>
+      <span>Snapshots are resized (640×360) to keep API stable.</span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
