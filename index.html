@@ -49,6 +49,14 @@
       color: #16325c;
     }
 
+    /* ✅ FAqat qo‘shilgan qism */
+    .author {
+      margin: 0 0 18px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #4a5b70;
+    }
+
     .subtitle {
       max-width: 720px;
       margin: 0 auto;
@@ -234,7 +242,10 @@
   <div class="container">
     <section class="hero">
       <div class="badge">Public Interactive Demo</div>
+
       <h1>🎓 Real-Time Teacher AI</h1>
+      <p class="author">Developed by Azamat Madrimov</p>
+
       <p class="subtitle">
         An AI-powered classroom assistant designed to help teachers and students
         with clear explanations, quick quizzes, homework ideas, and structured support.
@@ -247,137 +258,3 @@
         <a href="#links">Project Links</a>
       </nav>
     </section>
-
-    <section class="grid">
-      <div class="card" id="demo">
-        <h2>Interactive Demo</h2>
-        <p class="muted">
-          This page is a simplified public demo of the full Real-Time Teacher AI system.
-          The complete project includes multimodal audio/image input, a FastAPI backend,
-          and Gemini-powered classroom support.
-        </p>
-
-        <div class="demo-box">
-          <label for="grade">Grade Level</label>
-          <select id="grade">
-            <option>Grade 5</option>
-            <option>Grade 6</option>
-            <option>Grade 7</option>
-            <option>Grade 8</option>
-            <option>Grade 9</option>
-            <option>Grade 10</option>
-            <option>Grade 11</option>
-          </select>
-
-          <label for="subject">Subject</label>
-          <select id="subject">
-            <option>Computer Science</option>
-            <option>Mathematics</option>
-            <option>Physics</option>
-            <option>Biology</option>
-            <option>English</option>
-          </select>
-
-          <label for="question">Student Question</label>
-          <textarea id="question" placeholder="Example: What is an algorithm and why is it important?"></textarea>
-
-          <div class="button-row">
-            <button class="primary" onclick="runDemo()">Ask Teacher AI</button>
-            <button class="secondary" onclick="fillExample()">Use Example</button>
-          </div>
-
-          <div class="output" id="output">Response will appear here...</div>
-
-          <div class="small-note">
-            Note: This is a lightweight public preview for evaluation. The full project
-            supports microphone input, optional camera image input, backend processing,
-            and structured AI teaching outputs.
-          </div>
-        </div>
-      </div>
-
-      <div class="card" id="features">
-        <h2>Core Features</h2>
-        <ul class="feature-list">
-          <li>Structured AI explanations for classroom topics</li>
-          <li>Quick quiz generation for student engagement</li>
-          <li>Homework suggestions for reinforcement</li>
-          <li>Teacher-focused support and response structure</li>
-          <li>Designed for multimodal classroom interaction</li>
-        </ul>
-
-        <div class="links" id="links">
-          <a class="link-btn" href="https://github.com/InfoSchoolUz/Real-Time-Teacher-AI" target="_blank" rel="noopener noreferrer">
-            View Full GitHub Project
-          </a>
-          <a class="link-btn alt" href="https://github.com/InfoSchoolUz/rttai-demo" target="_blank" rel="noopener noreferrer">
-            View Demo Repository
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" id="about" style="margin-top: 20px;">
-      <h2>About This Demo</h2>
-      <p class="muted">
-        Real-Time Teacher AI is built as a practical classroom assistant concept.
-        The full implementation is designed to combine audio input, optional image input,
-        AI analysis, and structured educational output in a teacher-friendly workflow.
-      </p>
-      <p class="muted">
-        This public page is intentionally simplified so reviewers can quickly access
-        and test an interactive version without local setup requirements.
-      </p>
-    </section>
-
-    <div class="footer">
-      Real-Time Teacher AI • Simplified Public Demo
-    </div>
-  </div>
-
-  <script>
-    function fillExample() {
-      document.getElementById("grade").value = "Grade 7";
-      document.getElementById("subject").value = "Computer Science";
-      document.getElementById("question").value = "What is an algorithm and where do we use it in daily life?";
-      document.getElementById("output").innerText = "Response will appear here...";
-    }
-
-    function runDemo() {
-      const grade = document.getElementById("grade").value;
-      const subject = document.getElementById("subject").value;
-      const question = document.getElementById("question").value.trim();
-      const output = document.getElementById("output");
-
-      if (!question) {
-        output.innerText = "Please enter a question before running the demo.";
-        return;
-      }
-
-      output.innerText = "⏳ Teacher AI is analyzing the question...";
-
-      setTimeout(() => {
-        output.innerText =
-`📘 Explanation
-For ${grade} ${subject}, the topic "${question}" can be explained in a simple, student-friendly way with real-life examples and clear step-by-step guidance.
-
-🧠 Key Points
-• Break the topic into small understandable parts
-• Connect the idea to classroom or daily-life situations
-• Focus on clarity before technical detail
-
-❓ Quick Quiz
-1. What is the main idea of this topic?
-2. Can you give one simple example?
-3. Why is this useful in real life?
-
-📝 Homework
-Write a short explanation of the topic in your own words and give one practical example.
-
-👨‍🏫 Teacher Tip
-Start with a familiar example, then move to the formal definition so students stay engaged.`;
-      }, 900);
-    }
-  </script>
-</body>
-</html>
